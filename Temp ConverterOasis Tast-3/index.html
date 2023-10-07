@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" type="Images/png" href="logo.png">
+</head>
+<body>
+  <div class="converter">
+    <h1>Temperature Converter</h1>
+    <label for="fahrenheit">Fahrenheit <span>(°F)</span></label>
+
+    <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+    <button onclick="convertToCelsius()">Convert to Celsius</button>
+    <br>
+    <label for="celsius">Celsius <span>(°C)</span></label>
+    <input type="number" id="celsius" placeholder="Enter Celsius">
+    <button onclick="convertToFahrenheit()">Convert to Fahrenheit</button>
+  </div>
+
+
+</body>
+</html>
+
+
+<script>
+    function convertToCelsius() {
+        const fahrenheitInput = document.getElementById('fahrenheit');
+        const celsiusInput = document.getElementById('celsius');
+        
+        const fahrenheit = parseFloat(fahrenheitInput.value);
+        const celsius = (fahrenheit - 32) * 5 / 9;
+        
+        celsiusInput.value = celsius.toFixed(2);
+      }
+      
+      function convertToFahrenheit() {
+        const fahrenheitInput = document.getElementById('fahrenheit');
+        const celsiusInput = document.getElementById('celsius');
+        
+        const celsius = parseFloat(celsiusInput.value);
+        const fahrenheit = celsius * 9 / 5 + 32;
+        
+        fahrenheitInput.value = fahrenheit.toFixed(2);
+      }
+      
+      function handleFahrenheitInputKeyPress(event) {
+        if (event.key === 'Enter') {
+          convertToCelsius();
+        }
+      }
+      
+      function handleCelsiusInputKeyPress(event) {
+        if (event.key === 'Enter') {
+          convertToFahrenheit();
+        }
+      }
+      
+      document.getElementById('fahrenheit').addEventListener('keypress', handleFahrenheitInputKeyPress);
+      document.getElementById('celsius').addEventListener('keypress', handleCelsiusInputKeyPress);
+      
+      
+</script>
